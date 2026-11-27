@@ -2,6 +2,7 @@
 name = "wobbly-money"
 version = "0.1.0"
 edition = "2024"
+license = "Unlicense"
 description = "Backs up Wobbly Life saves and sets island and Space money for every character"
 
 [dependencies]
