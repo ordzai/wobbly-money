@@ -8,26 +8,26 @@ to a single executable for Linux and Windows and needs no runtime.
 
 Close Wobbly Life before running.
 
-```
+```shell
 wobbly-money [OPTIONS]
 ```
 
-| Option | Description |
-|---|---|
-| `--money <N>` | Wobbly Island money. Default `999999999`, maximum `2147483647`. |
-| `--space-money <N>` | Space money. Default: the `--money` value. |
-| `--save-dir <PATH>` | Wobbly Life `Save` directory. Default: detected automatically. |
-| `--backup-dir <PATH>` | Root directory for backups and logs. Default: `<Save>/../SaveBackups`. |
-| `--log <PATH>` | Log file. Default: `<backup root>/<timestamp>.log`. Appends if the file exists. |
-| `--dry-run` | Report current values. Modifies no save files and creates no backup. |
-| `--backup-only` | Create a backup. Modifies no save files. |
-| `-h`, `--help` | Print help. |
+| Option                | Description                                                                     |
+| --------------------- | ------------------------------------------------------------------------------- |
+| `--money <N>`         | Wobbly Island money. Default `999999999`, maximum `2147483647`.                 |
+| `--space-money <N>`   | Space money. Default: the `--money` value.                                      |
+| `--save-dir <PATH>`   | Wobbly Life `Save` directory. Default: detected automatically.                  |
+| `--backup-dir <PATH>` | Root directory for backups and logs. Default: `<Save>/../SaveBackups`.          |
+| `--log <PATH>`        | Log file. Default: `<backup root>/<timestamp>.log`. Appends if the file exists. |
+| `--dry-run`           | Report current values. Modifies no save files and creates no backup.            |
+| `--backup-only`       | Create a backup. Modifies no save files.                                        |
+| `-h`, `--help`        | Print help.                                                                     |
 
 Numbers may contain `,` or `_` separators (`--money 1,000,000`).
 
 Examples:
 
-```
+```shell
 wobbly-money --dry-run
 wobbly-money
 wobbly-money --money 50000 --space-money 20000
@@ -91,10 +91,10 @@ cloud conflict, select the local files.
 [MS-NRBF](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-nrbf/).
 The files contain no checksum.
 
-| Value | Location in `PlayerData_N.sav` | Encoding |
-|---|---|---|
-| Wobbly Island money | `PlayerMiscData.money` | Int32 member |
-| Space money | `PlayerActiveExternalData.data` | `"money"` key in a JSON string |
+| Value               | Location in `PlayerData_N.sav`  | Encoding                       |
+| ------------------- | ------------------------------- | ------------------------------ |
+| Wobbly Island money | `PlayerMiscData.money`          | Int32 member                   |
+| Space money         | `PlayerActiveExternalData.data` | `"money"` key in a JSON string |
 
 A character has Space data only after visiting Space. Characters without it
 receive Wobbly Island money only; the tool does not create Space data.
@@ -108,13 +108,13 @@ modified.
 
 Requires Rust 1.88 or later (edition 2024).
 
-```
+```shell
 cargo build --release
 ```
 
 Windows executable, cross-compiled from Linux (requires `mingw-w64-gcc`):
 
-```
+```shell
 rustup target add x86_64-pc-windows-gnu
 cargo build --release --target x86_64-pc-windows-gnu
 ```
